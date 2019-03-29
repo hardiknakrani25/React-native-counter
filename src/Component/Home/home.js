@@ -10,6 +10,8 @@ import {
 import styles from "./styles";
 
 export default class Home extends Component {
+  url = "http://localhost:3000/login";
+
   state = {
     username: "",
     Passsword: ""
@@ -17,15 +19,23 @@ export default class Home extends Component {
 
   onLogin = () => {
     const { username, Passsword } = this.state;
-    if (username == "Admin" && Passsword == "123") {
-      this.props.navigation.navigate("Counter");
-    } else {
-      Alert.alert("Error", "Username or password mismatch", [
-        {
-          text: "OKAY"
-        }
-      ]);
-    }
+
+    fetch(this.url, {
+      method: "POST",
+      body: JSON.stringify(this.state), // data can be `string` or {object}!
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(response => this.props.navigation.navigate("Counter"))
+      .catch(error =>
+        Alert.alert("Error", "Username or password mismatch", [
+          {
+            text: "OKAY"
+          }
+        ])
+      );
   };
 
   render() {
