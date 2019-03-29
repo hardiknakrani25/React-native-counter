@@ -18,7 +18,7 @@ export default class Home extends Component {
   onLogin = () => {
     const { username, Passsword } = this.state;
     if (username == "Admin" && Passsword == "123") {
-      this.props.navigation.navigate("Dashbord");
+      this.props.navigation.navigate("Counter");
     } else {
       Alert.alert("Error", "Username or password mismatch", [
         {
@@ -33,40 +33,47 @@ export default class Home extends Component {
       <SafeAreaView
         style={{
           justifyContent: "center",
+          backgroundColor: "powderblue",
           flex: 1
         }}
       >
         <View>
           <Text style={styles.heading}>Login</Text>
-          <TextInput
-            onChangeText={text =>
-              this.setState({
-                username: text
-              })
-            }
-            style={[
-              styles.input,
-              {
-                marginTop: 20
+          <View style={styles.view}>
+            <TextInput
+              onChangeText={text =>
+                this.setState({
+                  username: text
+                })
               }
-            ]}
-            placeholder={"Enter name"}
-          />
-          <TextInput
-            onChangeText={pass =>
-              this.setState({
-                Passsword: pass
-              })
-            }
-            style={[
-              styles.input,
-              {
-                marginTop: 20
+              style={[
+                styles.input,
+                {
+                  marginTop: 20
+                }
+              ]}
+              placeholder={"Enter name"}
+            />
+          </View>
+
+          <View style={styles.view}>
+            <TextInput
+              onChangeText={pass =>
+                this.setState({
+                  Passsword: pass
+                })
               }
-            ]}
-            secureTextEntry={true}
-            placeholder={"Enter Passsword"}
-          />
+              style={[
+                styles.input,
+                {
+                  marginTop: 20
+                }
+              ]}
+              secureTextEntry={true}
+              placeholder={"Enter Passsword"}
+            />
+          </View>
+
           <Button title={"Login"} onPress={() => this.onLogin()} />
         </View>
       </SafeAreaView>
