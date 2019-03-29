@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { SafeAreaView, TextInput, View, Text, Button } from "react-native";
+import {
+  SafeAreaView,
+  TextInput,
+  View,
+  Text,
+  Button,
+  Alert
+} from "react-native";
 import styles from "./styles";
 
 export default class Home extends Component {
@@ -11,7 +18,13 @@ export default class Home extends Component {
   onLogin = () => {
     const { username, Passsword } = this.state;
     if (username == "Admin" && Passsword == "123") {
-      console.warn("Login ok");
+      this.props.navigation.navigate("Dashbord");
+    } else {
+      Alert.alert("Error", "Username or password mismatch", [
+        {
+          text: "OKAY"
+        }
+      ]);
     }
   };
 
