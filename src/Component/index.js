@@ -1,13 +1,14 @@
-import React,{Component} from 'react';
-import {createStackNavigator,createAppContainer} from 'react-navigation'
-import Home from './Home/home';
+import React, { Component } from "react";
+import { createStackNavigator, createAppContainer } from "react-navigation";
+import Home from "./Home/home";
 
-
-
-const AppNavigator= createStackNavigator({
+const AppNavigator = createStackNavigator(
+  {
     Home
-},{
-headerMode:'none'
-})
+  },
+  {
+    headerMode: "none"
+  }
+);
 
 export default createAppContainer(AppNavigator);
