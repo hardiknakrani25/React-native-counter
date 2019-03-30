@@ -13,6 +13,6 @@ counter App
 > npm install
 
 ## Run Server
-Goto server directory
 
-> node app.js
+
+> npm run server
